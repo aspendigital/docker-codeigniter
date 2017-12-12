@@ -32,4 +32,9 @@ if [ ! -z "$PHP_UPLOAD_MAX_FILESIZE" ]; then
   sed -i "/upload_max_filesize=*/c\upload_max_filesize=$PHP_UPLOAD_MAX_FILESIZE" /usr/local/etc/php/conf.d/docker-ci-php.ini
 fi
 
+if [ ! -z "$TZ" ]; then
+  echo "php.ini set date.timezone=$TZ"
+  sed -i "/date.timezone=*/c\date.timezone=$TZ" /usr/local/etc/php/conf.d/docker-ci-php.ini
+fi
+
 exec "$@"

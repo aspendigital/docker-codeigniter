@@ -41,8 +41,6 @@ Using Docker volumes, you can mount local files inside a container.
 
 The container uses the working directory `/var/www/html` for the web server document root. You can introduce your local project code with bind-mounted volumes:
 
-Save yourself some keyboards strokes, utilize [docker-compose](https://docs.docker.com/compose/overview/) by introducing a `docker-compose.yml` file to your project folder:
-
 ```shell
 $ docker run -p 80:80 --rm \
   -v $(pwd):/var/www/html \

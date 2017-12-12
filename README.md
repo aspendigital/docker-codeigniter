@@ -1,6 +1,6 @@
 # Docker + CodeIgniter 1.7.3
 
-This image serves as a starting point for legacy CodeIgniter projects
+This image serves as a starting point for legacy CodeIgniter projects.
 
 ## Supported Tags
 
@@ -21,8 +21,7 @@ $ docker rm codeigniter  # Destroys the container
 > If there is a port conflict, you will receive an error message from the Docker daemon. Try mapping to an open local port (-p 8080:80) or shut down the container or server that is on the desired port.
 
  - Visit [http://localhost](http://localhost) using your browser.
- - Login to the [backend](http://localhost/backend) with the username `admin` and password `admin`.
- - Hit `CTRL-C` to stop the container. Running a container in the foreground will send log outputs to your terminal.
+  - Hit `CTRL-C` to stop the container. Running a container in the foreground will send log outputs to your terminal.
 
 Run the container in the background by passing the `-d` option:
 
@@ -32,17 +31,46 @@ $ docker stop codeigniter  # Stops the container. To restart `docker start codei
 $ docker rm codeigniter  # Destroys the container
 ```
 
+## Working with Local Files
+
+Using Docker volumes, you can mount local files inside a container.
+
+The CodeIgniter system folder resides in `/var/www/codeigniter`. Update the `$system_folder` variable in your project's `include/ci_include.php` file.
+
+The container uses the working directory `/var/www/html` for the web server document root. You can introduce your local project code with bind-mounted volumes:
+
+Save yourself some keyboards strokes, utilize [docker-compose](https://docs.docker.com/compose/overview/) by introducing a `docker-compose.yml` file to your project folder:
+
+```shell
+$ docker run -p 80:80 --rm \
+  -v $(pwd):/var/www/html \
+  aspendigital/codeigniter:latest
+```
+
+Save yourself some keyboards strokes, utilize [docker-compose](https://docs.docker.com/compose/overview/) by introducing a `docker-compose.yml` file to your project folder:
+
+
+```yml
+# docker-compose.yml
+version: '2.2'
+services:
+  web:
+    image: aspendigital/codeigniter:latest
+    ports:
+      - 80:80
+    volumes:
+      - $PWD:/var/www/html
+```
+With the above example saved in working directory, run:
+
+```shell
+$ docker-compose up -d # start services defined in `docker-compose.yml` in the background
+$ docker-compose down # stop and destroy
+```
+
 ### Environment Variables
 
-
-Environment variables can be passed to both docker-compose and the container.
-
- > Database credentials and other sensitive information should not be committed to the repository. Those required settings should be outlined in __.env.example__
-
- > Passing environment variables via Docker can be problematic in production. A `phpinfo()` call may leak secrets by outputting environment variables.  Consider mounting a `.env` volume or copying it to the container directly.
-
-
-#### Docker Entrypoint
+Environment variables can be passed to docker-compose.
 
 The following variables trigger actions run by the entrypoint script at runtime.
 

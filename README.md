@@ -7,7 +7,7 @@ This image serves as a starting point for legacy CodeIgniter projects.
 ## Supported Tags
 
 - `php7.1-apache`, `latest`: [Dockerfile](https://github.com/aspendigital/docker-codeigniter/blob/master/Dockerfile)
-- `php5.6-apache` : [Dockerfile.php5.6](https://github.com/aspendigital/docker-codeigniter/blob/master/Dockerfile.5.6)
+- `php5.6-apache` : [Dockerfile.php5.6](https://github.com/aspendigital/docker-codeigniter/blob/master/Dockerfile.php5.6)
 
 
 ## Quick Start

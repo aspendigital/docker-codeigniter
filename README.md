@@ -2,6 +2,8 @@
 
 This image serves as a starting point for legacy CodeIgniter projects.
 
+> The [CodeIgniter User Guide](https://github.com/aspendigital/docker-codeigniter/tree/master/CodeIgniter_1.7.3/user_guide) is served up by default if nothing has been copied or mounted to `/var/www/html`.
+
 ## Supported Tags
 
 - `php7.1-apache`, `latest`: [Dockerfile](https://github.com/aspendigital/docker-codeigniter/blob/master/Dockerfile)
@@ -35,7 +37,7 @@ $ docker rm codeigniter  # Destroys the container
 
 Using Docker volumes, you can mount local files inside a container.
 
-The CodeIgniter system folder resides in `/var/www/codeigniter`. Update the `$system_folder` variable in your project's `include/ci_include.php` file.
+> The CodeIgniter system folder resides in `/var/www/codeigniter`. Update the `$system_folder` variable in your project's `include/ci_include.php` file.
 
 The container uses the working directory `/var/www/html` for the web server document root. You can introduce your local project code with bind-mounted volumes:
 

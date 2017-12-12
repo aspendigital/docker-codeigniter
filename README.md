@@ -1,9 +1,11 @@
-# Docker + CodeIgniter
+# Docker + CodeIgniter 1.7.3
+
+This image serves as a starting point for legacy CodeIgniter projects
 
 ## Supported Tags
 
-- `php7.1-apache`, `latest`: Dockerfile
-- `php5.6-apache` : Dockerfile.php5.6
+- `php7.1-apache`, `latest`: [Dockerfile](https://github.com/aspendigital/docker-codeigniter/blob/master/Dockerfile)
+- `php5.6-apache` : [Dockerfile.php5.6](https://github.com/aspendigital/docker-codeigniter/blob/master/Dockerfile.5.6)
 
 
 ## Quick Start
@@ -52,3 +54,4 @@ The following variables trigger actions run by the entrypoint script at runtime.
 | PHP_UPLOAD_MAX_FILESIZE | - | Override value for `upload_max_filesize` in docker-oc-php.ini |
 | PHP_POST_MAX_SIZE | - | Override value for `post_max_size` in docker-oc-php.ini |
 | PHP_MEMORY_LIMIT | - | Override value for `memory_limit` in docker-oc-php.ini |
+| TZ | UTC | Override value for `data.timezone` in docker-oc-php.ini |

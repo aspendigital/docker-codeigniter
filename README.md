@@ -37,7 +37,7 @@ $ docker rm codeigniter  # Destroys the container
 
 Using Docker volumes, you can mount local files inside a container.
 
-> The CodeIgniter system folder resides in `/var/www/codeigniter`. Update the `$system_folder` variable in your project's `include/ci_include.php` file.
+> The CodeIgniter system folder resides in `/var/www/codeigniter`. You may need to update the `$system_folder` variable in your project's `include/ci_include.php` file.
 
 The container uses the working directory `/var/www/html` for the web server document root. You can introduce your local project code with bind-mounted volumes:
 

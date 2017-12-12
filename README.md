@@ -78,8 +78,8 @@ The following variables trigger actions run by the entrypoint script at runtime.
 | -------- | ------- | ------ |
 | ENABLE_CRON | false | `true` starts a cron process within the container |
 | FWD_REMOTE_IP | false | `true` enables remote IP forwarding from proxy (Apache) |
-| PHP_DISPLAY_ERRORS | - | Override value for `display_errors` in docker-oc-php.ini |
-| PHP_UPLOAD_MAX_FILESIZE | - | Override value for `upload_max_filesize` in docker-oc-php.ini |
-| PHP_POST_MAX_SIZE | - | Override value for `post_max_size` in docker-oc-php.ini |
-| PHP_MEMORY_LIMIT | - | Override value for `memory_limit` in docker-oc-php.ini |
-| TZ | UTC | Override value for `data.timezone` in docker-oc-php.ini |
+| PHP_DISPLAY_ERRORS | off | Override value for `display_errors` in docker-ci-php.ini |
+| PHP_POST_MAX_SIZE | 32M | Override value for `post_max_size` in docker-ci-php.ini |
+| PHP_MEMORY_LIMIT | 128M | Override value for `memory_limit` in docker-ci-php.ini |
+| PHP_UPLOAD_MAX_FILESIZE | 32M | Override value for `upload_max_filesize` in docker-ci-php.ini |
+| TZ | UTC | Override value for `data.timezone` in docker-ci-php.ini |

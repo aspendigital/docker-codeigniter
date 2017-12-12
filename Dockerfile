@@ -27,7 +27,10 @@ RUN { \
 
 RUN a2enmod rewrite
 
-COPY ./CodeIgniter_1.7.3/system /var/www/codeigniter
+COPY ./CodeIgniter_1.7.3 /usr/src/CodeIgniter_1.7.3
+
+RUN chown -R www-data:www-data /usr/src/CodeIgniter_1.7.3 && \
+  mv /usr/src/CodeIgniter_1.7.3/system /var/www/codeigniter
 
 COPY docker-entrypoint /usr/local/bin/
 

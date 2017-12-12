@@ -37,4 +37,9 @@ if [ ! -z "$TZ" ]; then
   sed -i "/date.timezone=*/c\date.timezone=$TZ" /usr/local/etc/php/conf.d/docker-ci-php.ini
 fi
 
+if [[ "$1" == apache2* ]] && [ -z "$(ls -A /var/www/html)" ]; then
+  echo "Document root (/var/www/html) is empty. Copying CodeIgniter User Guide..."
+  mv /usr/src/CodeIgniter_1.7.3/user_guide/* /var/www/html/.
+fi
+
 exec "$@"

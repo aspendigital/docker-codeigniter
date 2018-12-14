@@ -1,7 +1,7 @@
 FROM php:5.6-apache
 
 RUN apt-get update && apt-get install -y git-core cron \
-  libjpeg-dev libmcrypt-dev libpng12-dev libpq-dev \
+  libjpeg-dev libmcrypt-dev libpng-dev libpq-dev \
   && rm -rf /var/lib/apt/lists/* \
   && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
   && docker-php-ext-install gd mcrypt mysqli opcache pdo pdo_mysql zip
@@ -27,10 +27,9 @@ RUN { \
 
 RUN a2enmod rewrite
 
-COPY ./CodeIgniter_1.7.3 /usr/src/CodeIgniter_1.7.3
+COPY --chown=www-data:www-data ./CodeIgniter_1.7.3 /usr/src/CodeIgniter_1.7.3
 
-RUN chown -R www-data:www-data /usr/src/CodeIgniter_1.7.3 && \
-  mv /usr/src/CodeIgniter_1.7.3/system /var/www/codeigniter
+RUN ln -s /usr/src/CodeIgniter_1.7.3/system /var/www/codeigniter
 
 COPY docker-entrypoint /usr/local/bin/
 

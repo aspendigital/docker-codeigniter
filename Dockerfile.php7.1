@@ -25,6 +25,19 @@ RUN { \
     echo 'date.timezone="UTC"'; \
   } > /usr/local/etc/php/conf.d/docker-ci-php.ini
 
+RUN { \
+    echo '<FilesMatch "^\.">'; \
+    echo '    Order allow,deny'; \
+    echo '    Deny from all'; \
+    echo '</FilesMatch>'; \
+    echo '<DirectoryMatch "^\.|\/\.">'; \
+    echo '    Order allow,deny'; \
+    echo '    Deny from all'; \
+    echo '</DirectoryMatch>'; \
+  } > /etc/apache2/conf-available/docker-ci-php.conf
+
+RUN a2enconf docker-ci-php
+
 RUN a2enmod rewrite
 
 COPY --chown=www-data:www-data ./CodeIgniter_1.7.3 /usr/src/CodeIgniter_1.7.3
